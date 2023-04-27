@@ -5,6 +5,6 @@
 import math
 
 
-def floor(n :float) -> int:
+def floor(n: float) -> int:
     """Rounds down a number."""
     return (math.floor(n))

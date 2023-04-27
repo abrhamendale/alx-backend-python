@@ -3,12 +3,13 @@
 
 
 from typing import Mapping, Iterable, Union, List, Tuple
+import math
 
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     zoomed_in: Tuple = [
         item for item in lst
-        for i in range(factor)
+        for i in range(math.floor(factor))
     ]
     return zoomed_in
 

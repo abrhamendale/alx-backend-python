@@ -14,7 +14,7 @@ async def task_wait_n(n: int = 0, max_delay: int = 0) -> List[float]:
     """Returns the list of all delays."""
     ret = []
     for i in range(0, n):
-        tsk = await task_wait_random(max_delay)
+        tsk = task_wait_random(max_delay)
         while True:
             if tsk.done():
                 print(tsk.result(), "Output")

@@ -14,4 +14,4 @@ async def measure_time(n: int = 1, max_delay: int = 0) -> float:
     if n > 0:
         return ((time.perf_counter() - t1) / n)
     else:
-        return (0)
+        return (time.perf_counter() - t1)

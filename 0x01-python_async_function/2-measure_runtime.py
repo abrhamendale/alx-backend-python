@@ -9,7 +9,7 @@ import time
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-async def measure_time(n: int = 1, max_delay: int = 0) -> float:
+async def measure_time(n: int = 0, max_delay: int = 0) -> float:
     """Returns the average execution time."""
     if n < 0 or max_delay < 0:
         return (0)

@@ -8,6 +8,7 @@ import asyncio
 import random
 from typing import List
 
+
 async def async_generator() -> List[float]:
     """Generates a random number between 0 and 10."""
     r = []

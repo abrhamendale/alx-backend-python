@@ -47,6 +47,8 @@ class TestGetJson(unittest.TestCase):
         mock_response.json.return_value = True
         mock_requests.get.return_value = mock_response
         self.assertEqual(get_json('http://example.com'), True)
+        mock_response.json.return_value = False
+        self.assertEqual(get_json('http://holberton.io'), False)
 
 
 if __name__ == "__main__":

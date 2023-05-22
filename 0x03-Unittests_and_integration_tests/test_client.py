@@ -27,6 +27,7 @@ class TestGithubOrgClient(unittest.TestCase):
         m_requests.assert_called_once()
 
     def test_public_repos_url(self):
+        """Tests public urls."""
         with patch('client.GithubOrgClient.org',
                    new_callable=PropertyMock) as p:
             p.return_value = {"repos_url": 'abc'}
@@ -38,6 +39,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ({"license": {"key": "other_license"}}, "my_license", False)
     ])
     def test_has_license(self, a, b, c):
+        """Tests repos with license."""
         self.assertEqual(GithubOrgClient.has_license(a, b), c)
 
 

@@ -75,6 +75,7 @@ class TestMemoize(unittest.TestCase):
             self.assertEqual(TestClass.a_property, 42)
             a_mock.assert_called_once()
 
+
 if __name__ == "__main__":
     """Main function to run test."""
     unittest.main()

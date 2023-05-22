@@ -5,8 +5,8 @@ Test module for access_nested_map
 
 
 import unittest
-from unittest.mock import MagicMock, patch
-from utils import access_nested_map, get_json
+from unittest.mock import Mock, MagicMock, patch
+from utils import access_nested_map, get_json, memoize
 from parameterized import parameterized
 
 
@@ -42,14 +42,38 @@ class TestGetJson(unittest.TestCase):
     @patch('utils.requests')
     def test_get_json(self, mock_requests):
         """Test json functions."""
-        mock_response = MagicMock()
+        mock_response = Mock()
         mock_response.status_code = 200
         mock_response.json.return_value = True
         mock_requests.get.return_value = mock_response
         self.assertEqual(get_json('http://example.com'), True)
+        mock_requests.get.assert_called_once_with('http://example.com')
         mock_response.json.return_value = False
         self.assertEqual(get_json('http://holberton.io'), False)
 
+
+class TestMemoize(unittest.TestCase):
+    """Memoize test class."""
+
+    def test_memoize(self):
+        """A memoize test function."""
+
+        class TestClass():
+            """ A class inside a method."""
+
+            def a_method(self):
+                """A method."""
+                return 42
+
+            @memoize
+            def a_property(self, a):
+                return self.a_method()
+        t = TestClass()
+        with patch('test_utils.TestMemoize.TestClass') as p:
+            p.a_method.return_value = 42
+            self.assertEqual(TestClass.a_property, 42)
+            self.assertEqual(TestClass.a_property, 42)
+            a_mock.assert_called_once()
 
 if __name__ == "__main__":
     """Main function to run test."""

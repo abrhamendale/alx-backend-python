@@ -41,6 +41,9 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(GithubOrgClient.has_license(a, b), c)
 
 
+if __name__ == "__main__":
+    """Main function to run test."""
+    unittest.main()
 """
 @parametrized_class(('org_payload', 'repos_payload'
 , 'expected_repos', 'apache2_repos'), TEST_PATLOAD)
